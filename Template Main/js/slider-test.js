@@ -182,7 +182,7 @@ var products = [
 ]
 
 function addElement() {
-	const newDiv = document.createElement("div");
+	let newDiv = document.createElement("div");
 
 	products.forEach(element => {
 		newDiv.innerHTML += `
@@ -212,6 +212,7 @@ function addElement() {
 	document.getElementById('allUrunler').appendChild(newDiv)
 
 }
+
 window.addEventListener('DOMContentLoaded', function () {
 	addElement()
 })

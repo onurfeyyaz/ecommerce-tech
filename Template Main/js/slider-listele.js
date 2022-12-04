@@ -1,4 +1,4 @@
-const sliderArr = [
+ let sliderArr2 = [
     `
     Dünyanı genişlet!
     NanoEdge ekran, iş ve oyun için sürükleyici bir görüntüleme deneyimi sunar ve geniş bir ekran alanı sağlar. Geniş görüşlü FHD paneli, rahatsız edici parlama ve yansımalardan kaynaklanan istenmeyen dikkat dağıtıcı unsurları azaltmak için bir parlama önleyici kaplamaya sahiptir. Sadece önünüzde ne olduğuna odaklanın.`,
@@ -20,20 +20,20 @@ const sliderArr = [
 ]
 
 
-const titleProduct = document.querySelectorAll('.urunTitle')
-const priceProduct = document.querySelectorAll('.product-price')
-const imageProduct = document.querySelectorAll('.default-img')
+let titleProduct = document.querySelectorAll('.urunTitle')
+ let priceProduct = document.querySelectorAll('.product-price')
+ let imageProduct = document.querySelectorAll('.default-img')
 
 
 // product detail
-const productDetailImage = document.querySelector('.img-thumbnail')
-const productDetailTitle = document.querySelector('.product-detail-name')
-const productDetailSeller = document.querySelector('.product-detail-seller')
-const productDetailFeatures = document.querySelector('.product-detail-features')
-const productDetailPrice = document.querySelector('.product-detail-price')
+ let productDetailImage = document.querySelector('.img-thumbnail')
+ let productDetailTitle = document.querySelector('.product-detail-name')
+ let productDetailSeller = document.querySelector('.product-detail-seller')
+ let productDetailFeatures = document.querySelector('.product-detail-features')
+ let productDetailPrice = document.querySelector('.product-detail-price')
 
 let seciliData = {}
-const seciliUrun = (data) => {
+ let seciliUrun = (data) => {
     localStorage.removeItem('urunTitle')
     localStorage.removeItem('urunPrice')
     localStorage.removeItem('urunImage')
@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded',function (){
         productDetailTitle.innerText = this.localStorage.getItem('urunTitle')
         productDetailPrice.innerText = this.localStorage.getItem('urunPrice')
         productDetailImage.src = this.localStorage.getItem('urunImage')
-        productDetailFeatures.innerText = sliderArr[Math.floor(Math.random() * sliderArr.length-1)]
+        productDetailFeatures.innerText = sliderArr2[Math.floor(Math.random() * sliderArr2.length-1)]
     }
 })
 

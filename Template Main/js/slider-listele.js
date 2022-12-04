@@ -43,10 +43,55 @@ let seciliData = {}
     localStorage.setItem('urunImage',imageProduct[data].src)
 
 }
+/*
+<li>
+    <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+    <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
+    <h4><a href="#">APPLE iPhone 11 64GB Akıllı Telefon Siyah</a></h4>
+    <p class="quantity">1x - <span class="amount">15.999,00 TL</span></p>
+</li>
+*/
+
+let sepetim = []
+
+const sepeteEkle = (data) => {
+    let shoppingList = document.querySelector('.shopping-list')
+
+    sepetim.push({'title': titleProduct[data].textContent,
+    'price': priceProduct[data].textContent.trim(),
+    'image': imageProduct[data].src
+})
+    localStorage.setItem('urun', JSON.stringify(sepetim))
+
+    if(JSON.parse(localStorage.getItem('urun')).length > 0) {
+        sepetim.forEach ( element => {
+            shoppingList.innerHTML += `<li>
+            <a href="#" class="remove" title="Sil"><i class="fa fa-remove"></i></a>
+            <a class="cart-img" href="#"><img style="width:60px;height:40px;aspect-radio:1/1"src="${element.image}" alt="#"></a>
+            <h4><a href="#">${element.title}</a></h4>
+            <p class="quantity">1x - <span class="amount">${element.price}</span></p>
+        </li> ` 
+
+        })
+    }
+}
 
 window.addEventListener('DOMContentLoaded',function (){
     console.log("this.localStorage.getItem('title')",this.localStorage.getItem('urunTitle'))
+    
+    let shoppingList = document.querySelector('.shopping-list')
 
+    if(JSON.parse(localStorage.getItem('urun')).length > 0) {
+        sepetim.forEach ( element => {
+            shoppingList.innerHTML += `<li>
+            <a href="#" class="remove" title="Sil"><i class="fa fa-remove"></i></a>
+            <a class="cart-img" href="#"><img style="width:60px;height:40px;aspect-radio:1/1"src="${element.image}" alt="#"></a>
+            <h4><a href="#">${element.title}</a></h4>
+            <p class="quantity">1x - <span class="amount">${element.price}</span></p>
+        </li> ` 
+
+        })
+    }
     if(this.localStorage.getItem('urunTitle') && this.localStorage.getItem('urunPrice') && this.localStorage.getItem('urunImage')){
         productDetailTitle.innerText = this.localStorage.getItem('urunTitle')
         productDetailPrice.innerText = this.localStorage.getItem('urunPrice')

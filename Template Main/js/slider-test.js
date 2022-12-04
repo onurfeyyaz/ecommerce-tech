@@ -204,12 +204,10 @@ let sliderArr = [
 
 
 function addElement() {
-
-	products.forEach( element => {
-		let newDiv = document.createElement("div");
-		newDiv.innerHTML = `
+	products.forEach( (element, index) => {
+		document.querySelector('.allUrunler').innerHTML += `
 		<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-		<div class="single-product" onclick="${seciliUrun2(element.images[0], element.title, element.price)}">
+		<div class="single-product" onclick="seciliUrun2(${index})">
 			<div class="product-img">
 				<a href="product-details.html">
 					<img style="width:200px;height:200px" class="default-img" src="${element.images[0]}" alt="${element.images[0]}">
@@ -229,7 +227,6 @@ function addElement() {
 			</div>
 	</div>
 	</div>`
- 	document.querySelector('.allUrunler').appendChild(newDiv)	
 });
 
 }
@@ -242,16 +239,10 @@ let productDetailSeller2 = document.querySelector('.product-detail-seller')
 let productDetailFeatures2 = document.querySelector('.product-detail-features')
 let productDetailPrice2 = document.querySelector('.product-detail-price')
 
-const seciliUrun2 = (image, title, price) => {
-	localStorage.removeItem('urunTitle')
-	localStorage.removeItem('urunPrice')
-	localStorage.removeItem('urunImage')	
-
-    localStorage.setItem('urunTitle',title)
-    localStorage.setItem('urunPrice',price)
-    localStorage.setItem('urunImage',image)
-
-	console.log("urutn title", title)
+const seciliUrun2 = (index) => {
+    localStorage.setItem('urunTitle', products[index].title)
+    localStorage.setItem('urunPrice', products[index].price)
+    localStorage.setItem('urunImage', products[index].thumbnail)
 }
 
 window.addEventListener('DOMContentLoaded', function () {
